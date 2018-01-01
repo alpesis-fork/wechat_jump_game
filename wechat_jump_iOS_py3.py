@@ -1,5 +1,7 @@
 import wda
 import numpy as np
+import matplotlib  
+matplotlib.use('TkAgg')  
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from PIL import Image
@@ -7,9 +9,11 @@ import math
 import time
 import os
 
-# 截图距离 * time_coefficient = 按键时长
-# 此数据是 iPhoneX 的推荐系数，可根据手机型号进行调整
-time_coefficient = 0.00125
+
+# screenshot * time_coefficient = time of clicking keys
+# iPhoneX index
+# time_coefficient = 0.00125
+time_coefficient = 0.0021
 
 c = wda.Client()
 s = c.session()
@@ -64,10 +68,8 @@ def onClick(event):
     click_count += 1
     if click_count > 1:
         click_count = 0
-
         cor1 = cor.pop()
         cor2 = cor.pop()
-
         distance = (cor1[0][0] - cor2[0][0])**2 + (cor1[0][1] - cor2[0][1])**2
         distance = distance ** 0.5
         print('distance = ', distance)

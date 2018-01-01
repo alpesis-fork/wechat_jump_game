@@ -2,3 +2,9 @@ test/
 pic/
 screenshot_backups/
 1.png
+
+*.pyc
+*.swo
+*.swn
+*.swm
+*.swp
